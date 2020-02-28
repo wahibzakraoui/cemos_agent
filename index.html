@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <script>window.$ = window.jQuery = require('jquery');</script>
+    <link rel="stylesheet" href="assets/css/materialize.min.css">
+    <script src="assets/js/materialize.min.js"></script>
+    <!--[if lt IE 9]>
+      <script type="text/javascript" src="excanvas.js"></script>
+    <![endif]-->
+
+    <script type="text/javascript" src="assets/js/segment-display.js"></script>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <title>MBJ AGENT V0.1</title>
+  </head>
+  <body>
+    <nav>
+      <div class="nav-wrapper green darken-1">
+        <a href="#" class="brand-logo center green darken-1">MBJ AGENT</a>
+      </div>
+    </nav>
+    <div class="display-area">
+      <div class="text-center counter">
+        <canvas id="displayOne" width="260" height="140">
+          Your browser is unfortunately not supported.
+        </canvas>
+      </div>
+      <div class="load-one"></div>
+    </div>
+    <div class="">
+      <div class="text-center counter">
+        <canvas id="displayTwo" width="260" height="140">
+          Your browser is unfortunately not supported.
+        </canvas>
+      </div>
+      <div class="load-two"></div>
+    </div>
+    <!-- You can also require other files to run in this process -->
+    <script src="./renderer.js" type="module"></script>
+  </body>
+</html>

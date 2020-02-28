@@ -1,0 +1,61 @@
+*{
+    overflow: hidden;
+}
+body{
+    background-color: #272c34;
+}
+.nav-wrapper{
+    -webkit-app-region: drag;
+}
+.margin-top-35{
+    margin-top: 35px;
+}
+.stronger{
+    font-weight: 900;
+}
+.text-gray{
+    color: #b0bec5;
+}
+#displayOne{
+    background-color: #1a1d22;
+    padding: 1rem;
+}
+#displayTwo{
+    background-color: #1a1d22;
+    padding: 1rem;
+}
+.brand-logo{
+    outline: none;
+    font-weight: 900;
+}
+.counter{
+    display: inline-block;
+    margin-right: 0;
+    width: 70%;
+    background-color: #1a1d22;
+}
+.display-area{
+    border-bottom: beige 1px solid;
+}
+.load-one{
+    display: inline-block;
+    width: 30%;
+    height: 172px;
+    background-image: url('../img/arrow-down-solid.svg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-color: rgb(67, 223, 28);
+    background-position-x: center;
+    position: absolute;
+}
+.load-two{
+    display: inline-block;
+    width: 30%;
+    height: 172px;
+    background-image: url('../img/arrow-up-solid.svg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-color: rgb(223, 28, 54);
+    background-position-x: center;
+    position: absolute;
+}
