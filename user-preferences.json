@@ -1,9 +1,0 @@
-{
-    "serial": { 
-        "COMin": "COM15", 
-        "COMout": "COM5" 
-    },
-    "web": {
-        "port": 3000
-    }
-}

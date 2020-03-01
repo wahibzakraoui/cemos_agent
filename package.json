@@ -1,15 +1,19 @@
 {
   "name": "cemos-ciment-agent",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "description": "CEMOS CIMENT SCALE AGENT",
   "main": "main.js",
   "scripts": {
     "start": "electron .",
     "pack": "electron-builder --dir",
-    "dist": "electron-builder",
+    "dist": "electron-builder build --win --publish never",
+    "deploy": "electron-builder build --win --publish always",
     "rebuild": "electron-rebuild -f -w serialport"
   },
-  "repository": "https://github.com/electron/electron-quick-start",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wahibzakraoui/cemos_agent.git"
+  },
   "keywords": [
     "CEMOS",
     "CIMENT",
@@ -33,9 +37,11 @@
   },
   "dependencies": {
     "cors": "^2.8.5",
+    "electron-updater": "^4.2.2",
     "express": "^4.17.1",
     "jquery": "^3.4.1",
     "moment": "^2.24.0",
-    "serialport": "^8.0.7"
+    "serialport": "^8.0.7",
+    "sweetalert2": "^9.8.2"
   }
 }

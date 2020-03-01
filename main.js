@@ -3,7 +3,7 @@ const { app, BrowserWindow, Tray, Menu, ipcMain } = require('electron')
 const path = require('path')
 var url = require('url')
 var iconpath = path.join(__dirname, 'icon.ico')
-const Store = require('./modules/store.js');
+const { autoUpdater } = require('electron-updater');
 
 const gotTheLock = app.requestSingleInstanceLock();
 
@@ -53,7 +53,7 @@ if (!gotTheLock) {
 
   app.on('ready', function () {
     createWindow();
-    mainWindow.hide();
+    //mainWindow.hide();
     var app = require('express')();
     var cors = require('cors')
     app.use(cors())
@@ -112,13 +112,19 @@ function createWindow() {
     height: 400,
     resizable: false,
     frame: false,
+    show: false,
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
       nodeIntegration: true
     },
     icon: iconpath
-  })
-
+  });
+  
+  mainWindow.once('ready-to-show', () => {
+    autoUpdater.checkForUpdatesAndNotify();
+    mainWindow.show();
+    console.log('ready to show... >', app.getVersion());
+  });
   //remove Menu
   mainWindow.setMenu(null)
   // handle window events
@@ -130,7 +136,8 @@ function createWindow() {
   mainWindow.loadFile('index.html')
 
   // Open the DevTools.
-  //mainWindow.webContents.openDevTools()
+  mainWindow.webContents.openDevTools();
+
 }
 
 function stopServer() {
@@ -157,3 +164,15 @@ function startServer() {
   });
   tray.setContextMenu(Menu.buildFromTemplate(myTray));
 }
+
+autoUpdater.on('update-available', () => {
+  mainWindow.webContents.send('update_available');
+});
+
+autoUpdater.on('update-downloaded', () => {
+  mainWindow.webContents.send('update_downloaded');
+});
+
+ipcMain.on('update-app', () => {
+  autoUpdater.quitAndInstall();
+});
